@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="teamList">
+        <li>BYU</li>
+        <li>Gonzaga</li>
+        <li>Loyola</li>
+        <li>Pacific</li>
+        <li>Pepperdine</li>
+        <li>Portland</li>
+        <li>Saint Marys</li>
+        <li>San Diego</li>
+        <li>San Francisco</li>
+        <li>Santa Clara</li>
+    </ul>
+    <br><br>
+    <input type="button" value="Play Game" onclick="playGame()">
+    <br><br>
+    <p>Season Results:</p>
+    <p id="output"></p>
+    
+    <script>
+        class Team {
+            teamName;
+            numWins;
+            numLosses;
+            winLossPct;
+            //array of game objects? games = [];?
+
+            getTeam() {
+                return this.teamName;
+            }
+
+            setTeam(pTeamName) {
+                this.teamName = pTeamName;
+            }
+
+            setWinsLosses(pWins, pLosses) {
+                this.numWins = pWins;
+                this.numLosses = pLosses;
+                this.winLossPct = numWins / (numWins + numLosses);
+            }
+
+            getWins() {
+                return this.numWins;
+            }
+
+            getLosses() {
+                return this.numLosses;
+            }
+
+            calcWinLossPct() {
+                this.winLossPct = numWins / (numWins + numLosses);
+            }
+        }
+
+        class BasketballTeam extends Team {
+            totalPointsFor;
+            totalPointsAgainst;
+
+            addPointsFor(pPointsAgainst) {
+                this.totalPointsFor += pPointsAgainst;
+            }
+
+            addPointsAgainst(pPointsAgainst) {
+                this.totalPointsAgainst += pPointsAgainst;
+            }
+
+            getAllPoints() {
+                var sOutput = "Points for " + totalPointsFor + " and Points Against " + totalPointsAgainst;
+                return sOutput;
+            }
+            
+        }
+
+        class Game {
+            myScore;
+            theirScore;
+            winOrLoss; //string of W or L
+
+            constructor(pMyScore, pTheirScore, pWinOrLoss) {
+                this.myScore = pMyScore;
+                this.theirScore = pTheirScore;
+                this.winOrLoss = pWinOrLoss;
+            }
+        }
+    </script>
+</body>
+</html>
