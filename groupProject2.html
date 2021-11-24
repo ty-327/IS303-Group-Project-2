@@ -31,49 +31,42 @@
             numWins;
             numLosses;
             winLossPct;
-            //array of game objects? games = [];?
+            games = [];
 
             getTeam() {
                 return this.teamName;
             }
-
             setTeam(pTeamName) {
                 this.teamName = pTeamName;
             }
-
             setWinsLosses(pWins, pLosses) {
                 this.numWins = pWins;
                 this.numLosses = pLosses;
-                this.winLossPct = numWins / (numWins + numLosses);
+                this.winLossPct = pWins / (pWins + pLosses);
             }
-
             getWins() {
                 return this.numWins;
             }
-
             getLosses() {
                 return this.numLosses;
             }
-
             calcWinLossPct() {
-                this.winLossPct = numWins / (numWins + numLosses);
+                this.winLossPct = this.numWins / (this.numWins + this.numLosses);
             }
         }
 
         class BasketballTeam extends Team {
-            totalPointsFor;
-            totalPointsAgainst;
+            totalPointsFor = 0;
+            totalPointsAgainst = 0;
 
             addPointsFor(pPointsAgainst) {
                 this.totalPointsFor += pPointsAgainst;
             }
-
             addPointsAgainst(pPointsAgainst) {
                 this.totalPointsAgainst += pPointsAgainst;
             }
-
             getAllPoints() {
-                var sOutput = "Points for " + totalPointsFor + " and Points Against " + totalPointsAgainst;
+                var sOutput = "Points for " + this.totalPointsFor + " and Points Against " + this.totalPointsAgainst;
                 return sOutput;
             }
             
@@ -90,6 +83,34 @@
                 this.winOrLoss = pWinOrLoss;
             }
         }
+
+        //Testing Team Class
+        var team1 = new Team();
+        team1.setTeam("BYU Cougars");
+        alert(team1.getTeam());
+
+        team1.setWinsLosses(12, 2);
+        alert(team1.getWins());
+        alert(team1.getLosses());
+
+        team1.calcWinLossPct();
+        alert(team1.winLossPct);
+
+        //Testing BasketballTeam Class
+        var bballTeam1 = new BasketballTeam();
+        bballTeam1.addPointsFor(25);
+        bballTeam1.addPointsFor(25);
+        bballTeam1.addPointsAgainst(20);
+        bballTeam1.addPointsAgainst(20);
+        alert(bballTeam1.getAllPoints());
+
+        //Testing Game Class
+        var game1 = new Game(75, 50, "W");
+        alert(game1.myScore);
+        alert(game1.theirScore);
+        alert(game1.winOrLoss);
+
+        
     </script>
 </body>
 </html>
