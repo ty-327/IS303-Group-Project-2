@@ -59,8 +59,8 @@
             totalPointsFor = 0;
             totalPointsAgainst = 0;
 
-            addPointsFor(pPointsAgainst) {
-                this.totalPointsFor += pPointsAgainst;
+            addPointsFor(pPointsFor) {
+                this.totalPointsFor += pPointsFor;
             }
             addPointsAgainst(pPointsAgainst) {
                 this.totalPointsAgainst += pPointsAgainst;
@@ -109,6 +109,55 @@
         alert(game1.myScore);
         alert(game1.theirScore);
         alert(game1.winOrLoss);
+        
+        //-------------------- Begin Tran's part ----------------------
+        var teamList = [];
+teamList = ["BYU", "Gonzaga", "Loyola", "Pacific" ,"Pepperdine", "Portland", "Saint Marys", "San Diego", "San Francisco", "Santa Clara"]; //"Pacific" ,"Pepperdine", "Portland", "Saint Marys", "San Diego", "San Francisco", "Santa Clara"
+
+// Set teams based on the list
+for (let i=0; i<teamList.length; i++) {
+    window["team" + i] = new BasketballTeam();
+    window["team" + i].setTeam(teamList[i]);
+}
+
+
+for (let i=0; i<teamList.length; i++){
+    for (let j=0; j<teamList.length; j++) {
+        if (i!=j){
+            var game = new Game();
+            game.myScore = Math.floor(Math.random()*(100-0+1) + 0) + 5; // home team gets extra 5 points
+            game.theirScore = Math.floor(Math.random()*(100-0+1) + 0);
+            // Add Points For for both teams
+            window["team" + i].addPointsFor(game.myScore);
+            window["team" + j].addPointsFor(game.theirScore);
+
+            // Add Points Against for both teams
+            window["team" + i].addPointsAgainst(game.theirScore);
+            window["team" + j].addPointsAgainst(game.myScore);
+
+            while (game.myScore === game.theirScore) {
+                console.log("There's a tie!")
+                game.myScore = Math.floor(Math.random()*(15-0+1) + 0); 
+                game.theirScore = Math.floor(Math.random()*(15-0+1) + 0);
+
+                // Add Points For for both teams
+                window["team" + i].addPointsFor(game.myScore);
+                window["team" + j].addPointsFor(game.theirScore);
+
+                // Add Points Against for both teams
+                window["team" + i].addPointsAgainst(game.theirScore);
+                window["team" + j].addPointsAgainst(game.myScore);
+            }
+
+            // Testing
+            //console.log(i + " vs. " + j);
+            //console.log("Points For " + window["team" + i].getTeam() + ": " + game.myScore);
+            //console.log("Points Against " + window["team" + j].getTeam() + ": " + game.theirScore); 
+        }   
+    }
+}
+        //-------------------- End Tran's part ------------------------
+        
 
         
     </script>
