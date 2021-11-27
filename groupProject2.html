@@ -148,6 +148,21 @@ for (let i=0; i<teamList.length; i++){
                 window["team" + i].addPointsAgainst(game.theirScore);
                 window["team" + j].addPointsAgainst(game.myScore);
             }
+            
+            // Add array of Game objects to Team object
+            window["team" + i].games.push(myGame)
+            window["team" + j].games.push(theirGame)
+
+            // Update win/loss to game object
+            if (game.myScore > game.theirScore) {
+                myGame.winOrLoss = "W";
+                theirGame.winOrLoss = "L";
+            }
+            else {
+                myGame.winOrLoss = "L";
+                theirGame.winOrLoss = "W";
+            }
+            
 
             // Testing
             //console.log(i + " vs. " + j);
