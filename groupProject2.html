@@ -110,15 +110,15 @@
         alert(game1.theirScore);
         alert(game1.winOrLoss);
         
-        //-------------------- Begin Tran's part ----------------------
+        
         var teamList = [];
-teamList = ["BYU", "Gonzaga", "Loyola", "Pacific" ,"Pepperdine", "Portland", "Saint Marys", "San Diego", "San Francisco", "Santa Clara"]; //"Pacific" ,"Pepperdine", "Portland", "Saint Marys", "San Diego", "San Francisco", "Santa Clara"
+        teamList = ["BYU", "Gonzaga", "Loyola", "Pacific" ,"Pepperdine", "Portland", "Saint Marys", "San Diego", "San Francisco", "Santa Clara"];
 
-// Set teams based on the list
-for (let i=0; i<teamList.length; i++) {
-    window["team" + i] = new BasketballTeam();
-    window["team" + i].setTeam(teamList[i]);
-}
+        // Set teams based on the list
+        for (let i=0; i<teamList.length; i++) {
+            window["team" + i] = new BasketballTeam();
+            window["team" + i].setTeam(teamList[i]);
+        }
 
 
 for (let i=0; i<teamList.length; i++){
@@ -163,16 +163,13 @@ for (let i=0; i<teamList.length; i++){
                 theirGame.winOrLoss = "W";
             }
             
-
             // Testing
             //console.log(i + " vs. " + j);
             //console.log("Points For " + window["team" + i].getTeam() + ": " + game.myScore);
             //console.log("Points Against " + window["team" + j].getTeam() + ": " + game.theirScore); 
         }   
     }
-}
-        //-------------------- End Tran's part ------------------------
-        
+}  
 
         
     </script>
